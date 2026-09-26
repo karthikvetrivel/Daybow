@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daybow</title>
+  <link rel="icon" href="icons/icon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="options.css" />
+  <link rel="stylesheet" href="calendar.css" />
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 36 36" aria-hidden="true">
+        <rect x="2" y="4" width="32" height="30" rx="7" fill="#fff" stroke="#747775" />
+        <rect x="2" y="4" width="32" height="9" rx="7" fill="#0b57d0" />
+        <rect x="2" y="9" width="32" height="4" fill="#0b57d0" />
+        <rect x="7" y="17" width="10" height="4" rx="2" fill="#ffe08a" />
+        <rect x="19" y="17" width="10" height="4" rx="2" fill="#b5ead7" />
+        <rect x="7" y="24" width="14" height="4" rx="2" fill="#ffb7b2" />
+        <rect x="23" y="24" width="6" height="4" rx="2" fill="#d7b8ff" />
+      </svg>
+      <span><b>Daybow</b></span>
+    </span>
+    <div class="acct" id="acct"></div>
+  </header>
+  <main>
+    <section class="card" id="account">
+      <div class="cardhead"><h2 id="account-line">Loading…</h2><span class="pill" id="statuspill">Extension</span></div>
+      <p class="muted">Every event on your Google Calendar gets a pastel category label within seconds, chosen by Jev. Runs in this browser.</p>
+      <div id="stats" class="stats" hidden></div>
+      <p id="runline" class="muted small"></p>
+      <div class="row">
+        <button class="btn google" id="signin"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.2 5.5-4.7 7.2l7.4 5.7c4.3-4 7.1-9.9 7.1-17.4z"/><path fill="#FBBC05" d="M10.4 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-7.8-6.1C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.7l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.4-5.6l-7.4-5.7c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.7-4.1-13.6-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z"/></svg> Sign in with Google</button>
+        <button class="btn tonal" id="run" hidden>Label now</button>
+        <button class="btn danger" id="signout" hidden>Sign out and forget my data</button>
+      </div>
+      <p id="notice" class="notice" hidden></p>
+    </section>
+
+    <section class="card">
+      <div class="cardhead"><h2>Categories</h2><span class="pill" id="catcount"></span></div>
+      <div id="catcal"></div>
+    </section>
+
+    <section class="card">
+      <div class="cardhead"><h2>Jev API key</h2><a class="muted small" href="https://console.typesafe.ai/keys" target="_blank" rel="noreferrer">console.typesafe.ai/keys</a></div>
+      <div class="keyrow">
+        <input class="field" type="password" id="jevkey" placeholder="apikey_…" autocomplete="off" />
+        <button class="btn secondary" id="savekey">Save key</button>
+      </div>
+      <p id="key-line" class="muted small" style="margin-top:8px"></p>
+    </section>
+
+    <section class="card">
+      <div class="cardhead"><h2>Tuning</h2></div>
+      <div class="grid2">
+        <label>Minimum confidence <input class="field" type="number" id="minconf" min="0" max="1" step="0.05" /></label>
+        <label>Sweep every (minutes) <input class="field" type="number" id="sweep" min="1" max="120" step="1" /></label>
+        <label>Look back (days) <input class="field" type="number" id="past" min="0" max="365" /></label>
+        <label>Look ahead (days) <input class="field" type="number" id="future" min="1" max="365" /></label>
+      </div>
+      <div class="row"><button class="btn secondary" id="savetuning">Save tuning</button></div>
+    </section>
+
+    <p class="muted small" style="margin-top:16px">Only event labels change. Titles, times, guests, and notifications are never touched. Labels you set or remove by hand are never overridden. Event titles are sent to TypeSafe's Jev model to pick a category and are not stored.</p>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

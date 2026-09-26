@@ -1,0 +1,33 @@
+name: Bug report
+description: Something does not work as the README says.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Part
+      options:
+        - Chrome extension
+        - Web app
+        - Labeling (a wrong or missing category)
+        - Demo video
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Chrome version and operating system
+      placeholder: Chrome 140, macOS 15.1
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors
+      description: Errors from the extension's card in chrome://extensions, or from the status page. Remove event titles and emails before you paste.
+      render: text

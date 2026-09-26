@@ -1,0 +1,26 @@
+{
+  "name": "daybow-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Demo out/daybow-16x9.mp4",
+    "render:square": "remotion render src/index.ts DemoSquare out/daybow-1x1.mp4",
+    "render:ffmpeg": "node render-ffmpeg.mjs Demo out/daybow-16x9.mp4",
+    "render:square:ffmpeg": "node render-ffmpeg.mjs DemoSquare out/daybow-1x1.mp4",
+    "readme-media": "sh readme-media.sh"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.529",
+    "@remotion/google-fonts": "^4.0.529",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "^4.0.529",
+    "@remotion/renderer": "^4.0.529",
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}
