@@ -125,7 +125,21 @@ On a real week of 64 events, Jev labeled 61 with a confidence of 0.5 or more, in
 
 ## Install
 
-Setup takes about 10 minutes, most of it in the Google Cloud console. A Chrome Web Store listing is on the roadmap.
+### Download a release
+
+Setup takes about two minutes. You need Chrome and a Jev API key from [console.typesafe.ai/keys](https://console.typesafe.ai/keys).
+
+1. Download `daybow-0.1.0.zip` from the [latest release](https://github.com/karthikvetrivel/Daybow/releases/latest) and unzip it.
+2. Open `chrome://extensions` and turn on "Developer mode".
+3. Click "Load unpacked" and select the unzipped folder. The Daybow page opens.
+4. Click "Sign in with Google". Google says that it has not verified the app. Click "Advanced", then "Go to Daybow".
+5. Paste your Jev API key and click "Save key".
+
+A Chrome Web Store listing is on its way. It replaces steps 1 to 3 with one click on "Add to Chrome".
+
+### Build from source
+
+Use this path to change the code or to use your own Google OAuth client. Setup takes about 10 minutes, most of it in the Google Cloud console.
 
 You need Node.js 22 or later, Chrome, a Google OAuth client, and a Jev API key.
 
@@ -220,6 +234,7 @@ Do not share an extension build made with `EMBED_JEV_KEY=1`, because it contains
 npm test                  # unit, DOM, and flow tests. The live Jev test runs when TYPESAFE_API_KEY is set.
 npm run typecheck         # the web app and the extension
 npm run build:extension   # extension/dist
+npm run package:extension # release/: a ZIP for GitHub Releases and one for the Chrome Web Store
 npm run dev               # the web app on http://localhost:3000
 npm run eval              # classify .data/real-events.json, an events.list export, and write .data/eval.md
 ```
@@ -277,7 +292,7 @@ Usually. If your organization's admin blocks third-party apps, sign-in shows an 
 <details>
 <summary>Why is Daybow not in the Chrome Web Store?</summary>
 
-A store listing is on the roadmap. Until then, you load the extension from source with your own Google OAuth client, as described in <a href="#install">Install</a>.
+A listing is on its way. Until then, download the release ZIP and load it in Developer mode, as described in <a href="#install">Install</a>. It takes about two minutes.
 </details>
 
 ## Privacy
@@ -297,7 +312,7 @@ A store listing is on the roadmap. Until then, you load the extension from sourc
 
 ## Roadmap
 
-- A Chrome Web Store listing, so that installs take one click.
+- A public Chrome Web Store listing, so that installs take one click.
 - Labels on more than the primary calendar.
 - Toast detection in more languages.
 - A Firefox build.

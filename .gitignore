@@ -47,6 +47,7 @@ next-env.d.ts
 .codex-runs/
 extension/key.pem
 extension/dist/
+/release/
 extension/secrets.js
 
 # demo video: packages and renders

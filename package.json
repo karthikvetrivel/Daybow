@@ -37,6 +37,7 @@
     "eval": "tsx scripts/eval-real-events.ts",
     "deploy": "vercel deploy --prod --yes",
     "build:extension": "node scripts/build-extension.mjs",
+    "package:extension": "node scripts/package-extension.mjs",
     "check": "npm run typecheck && npm test"
   },
   "dependencies": {

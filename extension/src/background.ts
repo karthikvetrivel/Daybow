@@ -335,9 +335,11 @@ async function scheduleTokenRefresh() {
   await chrome.alarms.create(TOKEN_ALARM, { when: Math.max(Date.now() + 30_000, expires - 5 * 60_000) });
 }
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   void scheduleSweep();
   void scheduleTokenRefresh();
+  // Chrome hides new extensions in the puzzle-piece menu, so open the page with the sign-in button right away.
+  if (details.reason === "install") void chrome.runtime.openOptionsPage();
 });
 chrome.runtime.onStartup.addListener(() => {
   void scheduleSweep();

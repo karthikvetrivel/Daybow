@@ -15,7 +15,8 @@ import path from "node:path";
 
 const root = path.resolve(new URL(".", import.meta.url).pathname, "..");
 const ext = path.join(root, "extension");
-const dist = path.join(ext, "dist");
+// EXTENSION_OUT builds somewhere else, so that packaging never touches the copy that Chrome loads.
+const dist = process.env.EXTENSION_OUT ? path.resolve(process.env.EXTENSION_OUT) : path.join(ext, "dist");
 mkdirSync(dist, { recursive: true });
 
 const env = {};
@@ -73,7 +74,7 @@ copyFileSync(path.join(root, "ui", "category-calendar.css"), path.join(dist, "ca
 mkdirSync(path.join(dist, "icons"), { recursive: true });
 for (const size of [16, 32, 48, 128]) copyFileSync(path.join(ext, "static", "icons", `icon-${size}.png`), path.join(dist, "icons", `icon-${size}.png`));
 
-console.log(`built extension/dist (version ${version})`);
+console.log(`built ${path.relative(root, dist)} (version ${version})`);
 console.log(`  extension id   ${extensionId}`);
 console.log(`  redirect URI   https://${extensionId}.chromiumapp.org/   (add it to your Google OAuth client)`);
 console.log(`  Jev key        ${jevKey ? "embedded as the default (do not share this build)" : "not embedded (paste it in the options page)"}`);

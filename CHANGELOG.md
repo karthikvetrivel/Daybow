@@ -11,3 +11,5 @@ First public release of Daybow.
 - In-place repaint on the Calendar page, with a wave for batch changes and past-event tints.
 - Optional web app on Vercel: server-side labeling through Google push notifications, a daily sweep, and a status page.
 - Demo video made in code with Remotion.
+- A release ZIP that installs in Developer mode, with no build and no Google Cloud setup. The Daybow page opens by itself after install.
+- A privacy policy, and a package and listing for the Chrome Web Store.
