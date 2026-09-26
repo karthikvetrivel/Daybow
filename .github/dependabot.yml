@@ -7,6 +7,13 @@ updates:
     groups:
       minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      # A new TypeScript major needs a planned migration.
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
+      # @types/node follows the oldest supported Node.js version, 22.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
